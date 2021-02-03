@@ -18,22 +18,8 @@ module Ksp::Commands
 
     private
 
-    def find_application(directory:)
-      app_path = File.join(directory, 'KSP.app')
-
-      return app_path if Dry::CLI::Utils::Files.exist?(app_path)
-
-      error = Ksp::Errors::InvalidApplicationPath.new(
-        application_path: app_path
-      )
-      failure(error)
-    end
-
-    def find_application_directory
-      return ENV['KSP_PATH'] if ENV['KSP_PATH']
-
-      error = Ksp::Errors::UnknownApplicationPath.new
-      failure(error)
+    def find_application
+      Ksp::Commands::Config::ApplicationPath.new.call
     end
 
     def launch_application(application_path:, dry_run:)
@@ -46,10 +32,7 @@ module Ksp::Commands
     end
 
     def process(dry_run: false)
-      application_directory = step { find_application_directory }
-      application_path      = step do
-        find_application(directory: application_directory)
-      end
+      application_path = step { find_application }
 
       Kernel.puts "Launching Kerbal Space Program from #{application_path}..."
 

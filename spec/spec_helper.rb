@@ -20,6 +20,15 @@ RSpec.configure do |config|
   config.extend  RSpec::SleepingKingStudios::Concerns::WrapExamples
   config.include RSpec::SleepingKingStudios::Examples::PropertyExamples
 
+  def stub_env(key, value)
+    previous = ENV[key]
+    ENV[key] = value
+
+    yield
+  ensure
+    ENV[key] = previous
+  end
+
   config.disable_monkey_patching!
 
   # This allows you to limit a spec run to individual examples or groups

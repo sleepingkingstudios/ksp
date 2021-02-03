@@ -9,6 +9,8 @@ require 'ksp/commands'
 module Ksp::Commands
   # Sets up the launcher configuration files.
   class Initialize < Ksp::Cli::Command
+    include Ksp::Commands::Config::Helpers
+
     desc 'Initializes the KSP launcher and local configuration.'
 
     argument :application_path,
@@ -25,18 +27,6 @@ module Ksp::Commands
       desc:    'Overwrite the existing configuration'
 
     private
-
-    def config_dir
-      File.expand_path(ENV.fetch('KSP_CONFIG', '~/.ksp'))
-    end
-
-    def config_file
-      File.join(config_dir, 'config.yml')
-    end
-
-    def config_file_exists?
-      Dry::CLI::Utils::Files.exist?(config_file)
-    end
 
     def create_configuration_directory(dry_run:)
       if Dry::CLI::Utils::Files.directory?(config_dir)
