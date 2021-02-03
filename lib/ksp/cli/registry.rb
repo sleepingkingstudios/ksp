@@ -22,6 +22,7 @@ module Ksp::Cli
     def register(name, command = nil, aliases: [], &block)
       command = Class.new(command) do
         prepend Ksp::Cli::ErrorHandling
+        extend  Ksp::Cli::ParameterDelegation
       end
 
       super(name, command, aliases: aliases, &block)

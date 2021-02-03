@@ -35,5 +35,12 @@ RSpec.describe Ksp::Cli::Registry do
 
       expect { command_class.new.call }.not_to raise_error
     end
+
+    it 'should delegate Dry::CLI parameters to the superclass' do
+      registry.register('run', Spec::Command)
+
+      expect(command_class.singleton_class)
+        .to be < Ksp::Cli::ParameterDelegation
+    end
   end
 end

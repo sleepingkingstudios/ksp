@@ -8,4 +8,6 @@ RSpec.describe Ksp::Cli::Command do
   it { expect(command).to be_a Dry::CLI::Command }
 
   it { expect(command).to be_a_kind_of Cuprum::Processing }
+
+  it { expect(command).to be_a_kind_of Cuprum::Steps }
 end
