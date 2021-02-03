@@ -10,5 +10,8 @@ module Ksp::Commands
     register 'initialize', Ksp::Commands::Initialize
     register 'launch',     Ksp::Commands::Launch
     register 'version',    Ksp::Commands::Version
+
+    register 'config:print',     Ksp::Commands::Config::Print
+    register 'config:print:raw', Ksp::Commands::Config::PrintRaw
   end
 end
