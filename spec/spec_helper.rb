@@ -7,6 +7,7 @@ unless ENV['COVERAGE'] == 'false'
 end
 
 require 'rspec/sleeping_king_studios/all'
+require 'cuprum/rspec/be_a_result'
 require 'byebug'
 
 # Isolated namespace for defining spec-only or transient objects.

@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 
 ruby '2.7.2'
 
+gem 'cuprum',
+  git: 'https://github.com/sleepingkingstudios/cuprum'
 gem 'dry-cli', '~> 0.6'
 
 gem 'byebug', '~> 11.0'

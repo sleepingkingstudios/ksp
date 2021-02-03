@@ -11,4 +11,4 @@ $LOAD_PATH.unshift(lib_path)
 
 require 'ksp'
 
-Dry::CLI.new(Ksp::Commands).call
+Dry::CLI.new(Ksp::Commands::Registry).call
