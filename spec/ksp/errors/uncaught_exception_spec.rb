@@ -15,65 +15,15 @@ RSpec.describe Ksp::Errors::UncaughtException do
   describe '::TYPE' do
     include_examples 'should define immutable constant',
       :TYPE,
-      'cuprum.collections.errors.uncaught_exception'
+      'ksp.errors.uncaught_exception'
   end
 
   describe '.new' do
     it 'should define the constructor' do
       expect(described_class)
-        .to be_constructible
+        .to respond_to(:new)
         .with(0).arguments
         .and_keywords(:exception, :message)
-    end
-  end
-
-  describe '#as_json' do
-    let(:expected_data) do
-      {
-        'exception_backtrace' => exception.backtrace,
-        'exception_class'     => exception.class,
-        'exception_message'   => exception.message
-      }
-    end
-    let(:expected) do
-      {
-        'data'    => expected_data,
-        'message' => error.message,
-        'type'    => error.type
-      }
-    end
-
-    include_examples 'should have reader', :as_json
-
-    it 'should serialize the error' do # Beware of multiline output here.
-      expect(error.as_json).to be == expected
-    end
-
-    context 'when the exception has a cause' do
-      let(:raised) do
-        raise 'Something went wrong.'
-      rescue StandardError => cause # rubocop:disable Naming/RescuedExceptionsVariableName
-        begin
-          raise 'Things got worse.'
-        rescue StandardError => exception
-          [exception, cause]
-        end
-      end
-      let(:exception) { raised.first }
-      let(:cause)     { raised.last }
-      let(:expected_data) do
-        super().merge(
-          {
-            'cause_backtrace' => cause.backtrace,
-            'cause_class'     => cause.class,
-            'cause_message'   => cause.message
-          }
-        )
-      end
-
-      it 'should serialize the error' do # Beware of multiline output here.
-        expect(error.as_json).to be == expected
-      end
     end
   end
 
