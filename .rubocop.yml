@@ -13,11 +13,25 @@ AllCops:
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 
+Layout/HashAlignment:
+  EnforcedColonStyle:      table
+  EnforcedHashRocketStyle: table
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*_spec.rb
+
+Naming/RescuedExceptionsVariableName:
+  PreferredName: exception
+
 RSpec/ExampleWording:
   Enabled: false
 
 RSpec/HookArgument:
   EnforcedStyle: example
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
 
 Style/ClassAndModuleChildren:
   # Checks the style of children definitions at classes and modules.

@@ -4,11 +4,11 @@ require 'ksp/commands'
 
 module Ksp::Commands
   # Command to output the current launcher version.
-  class Version < Ksp::Command
+  class Version < Ksp::Cli::Command
     private
 
     def process
-      puts Ksp.version
+      Kernel.puts Ksp.version
     end
   end
 end

@@ -3,9 +3,9 @@
 require 'cuprum/processing'
 require 'dry/cli'
 
-require 'ksp'
+require 'ksp/cli'
 
-module Ksp
+module Ksp::Cli
   class Command < Dry::CLI::Command
     include Cuprum::Processing
   end

@@ -4,7 +4,7 @@ require 'ksp/version'
 
 # Custom launch script for Kerbal Space Program.
 module Ksp
-  autoload :Command,  'ksp/command'
+  autoload :Cli,      'ksp/cli'
   autoload :Commands, 'ksp/commands'
 
   class << self

@@ -11,13 +11,13 @@ RSpec.describe Ksp::Commands::Version do
 
   describe '#call' do
     before(:example) do
-      allow(command).to receive(:puts) # rubocop:disable RSpec/SubjectStub
+      allow(Kernel).to receive(:puts)
     end
 
     it { expect(command.call).to be_a_passing_result }
 
     it 'should print the launcher version to stdout' do
-      allow(command).to receive(:puts).and_call_original # rubocop:disable RSpec/SubjectStub
+      allow(Kernel).to receive(:puts).and_call_original
 
       expect { command.call }.to output("#{Ksp::VERSION}\n").to_stdout
     end

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'ksp/command'
+require 'ksp/cli/command'
 
-RSpec.describe Ksp::Command do
+RSpec.describe Ksp::Cli::Command do
   subject(:command) { described_class.new }
 
   it { expect(command).to be_a Dry::CLI::Command }
