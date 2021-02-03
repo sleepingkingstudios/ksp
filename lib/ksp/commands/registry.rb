@@ -7,7 +7,8 @@ module Ksp::Commands
   module Registry
     extend Ksp::Cli::Registry
 
-    register 'launch',  Ksp::Commands::Launch
-    register 'version', Ksp::Commands::Version
+    register 'initialize', Ksp::Commands::Initialize
+    register 'launch',     Ksp::Commands::Launch
+    register 'version',    Ksp::Commands::Version
   end
 end
